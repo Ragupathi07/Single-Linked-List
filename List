@@ -1,0 +1,94 @@
+import java.util.*;
+class Node{
+    int data;
+    Node next;
+}
+class Main{
+    static Node head;
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        create(n);
+        display();
+        insatbeg();
+        display();
+        insatend();
+        display();
+        insatmid();
+        display();
+    }
+    static void create(int n){
+        Node newNode,temp;
+        int data;
+        Scanner sc=new Scanner(System.in);
+        head=new Node();
+        data=sc.nextInt();
+        head.data=data;
+        head.next=null;
+        temp=head;
+        for(int i=2;i<=n;i++){
+            newNode=new Node();
+            data=sc.nextInt();
+            newNode.data=data;
+            newNode.next=null;
+            temp.next=newNode;
+            temp=temp.next;
+        }
+    } 
+    static void display(){
+        Node temp;
+        temp=head;
+        if(head==null){
+            System.out.println("memory does not created");
+        }
+        else{
+            while(temp!=null){
+                 System.out.print(temp.data+" ");
+                 temp=temp.next;
+            }
+        }
+    }
+    static void insatbeg(){
+        Node newNode;
+        Scanner sc=new Scanner(System.in);
+        newNode=new Node();
+        int k=sc.nextInt();
+        newNode.data=k;
+        newNode.next=head;
+        head=newNode;
+    }
+    static void insatend(){
+        Node newNode,temp;
+        temp=head;
+        Scanner sc=new Scanner(System.in);
+        newNode=new Node();
+        int s=sc.nextInt();
+        newNode.data=s;
+        newNode.next=null;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        temp.next=newNode;
+    }
+    static void insatmid(){
+        Node newNode,temp;
+        temp=head;
+        int data,position;
+        Scanner sc=new Scanner(System.in);
+        data=sc.nextInt();
+        position=sc.nextInt();
+        newNode=new Node();
+        newNode.data=data;
+        newNode.next=null;
+        if(position==0){
+            System.out.println("enter a valid position");
+        }
+        else{
+            for(int i=1;i<position-1;i++){
+                temp=temp.next;
+            }
+            newNode.next=temp.next;
+            temp.next=newNode;
+        }
+    }
+}
